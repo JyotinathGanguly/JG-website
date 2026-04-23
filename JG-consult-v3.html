@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jyotinath Ganguly | Healthcare Management Consulting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue-dark:   #0D3D7C;
+    --blue-mid:    #1565C0;
+    --blue-light:  #E3F2FD;
+    --blue-border: #BBDEFB;
+    --blue-soft:   #90CAF9;
+    --black:       #0f0f0f;
+    --text-main:   #1a1a1a;
+    --text-muted:  #555;
+    --text-light:  #888;
+    --white:       #ffffff;
+    --border:      #E0E0E0;
+    --font:        'DM Sans', 'Aptos', 'Segoe UI', Arial, sans-serif;
+    --radius:      8px;
+    --radius-lg:   12px;
+    --max-w:       1000px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font);
+    font-size: 15px;
+    color: var(--text-main);
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+
+  .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+  .sec-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--blue-mid);
+    margin-bottom: 8px;
+  }
+
+  .sec-title {
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+
+  .section { padding: 52px 0 44px; border-bottom: 1px solid var(--border); }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+  }
+  .nav-inner {
+    max-width: var(--max-w); margin: 0 auto;
+    display: flex; align-items: center;
+    justify-content: space-between;
+    height: 60px; gap: 16px;
+  }
+  .nav-brand { display: flex; flex-direction: column; line-height: 1.25; }
+  .nav-brand .name { font-size: 16px; font-weight: 700; color: var(--black); white-space: nowrap; }
+  .nav-brand .sub  { font-size: 11px; color: var(--text-muted); font-weight: 400; }
+  .nav-links { display: flex; gap: 22px; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: color .2s; }
+  .nav-links a:hover { color: var(--blue-mid); }
+  .nav-cta {
+    background: var(--blue-mid); color: var(--white);
+    font-size: 13px; font-weight: 600; padding: 9px 20px;
+    border-radius: var(--radius); text-decoration: none;
+    white-space: nowrap; transition: background .2s;
+    font-family: var(--font); border: none; cursor: pointer;
+  }
+  .nav-cta:hover { background: var(--blue-dark); }
+  @media(max-width:640px){ .nav-links { display:none; } .nav-brand .sub { display:none; } }
+
+  /* ── HERO ── */
+  .hero { padding: 60px 0 52px; border-bottom: 1px solid var(--border); }
+  .hero-content { max-width: 700px; animation: fadeUp .5s ease both; }
+  .hero h1 {
+    font-size: 36px; font-weight: 700;
+    line-height: 1.2; color: var(--black);
+    margin-bottom: 16px; letter-spacing: -.5px;
+  }
+  .hero h1 em { font-style: normal; color: var(--blue-mid); }
+  .hero p { font-size: 16px; color: var(--text-muted); line-height: 1.7; max-width: 580px; margin-bottom: 28px; }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .btn-primary {
+    background: var(--blue-mid); color: var(--white);
+    padding: 12px 24px; border-radius: var(--radius);
+    font-size: 14px; font-weight: 600; text-decoration: none;
+    transition: background .2s; font-family: var(--font);
+    border: none; cursor: pointer; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--blue-dark); }
+  .btn-outline {
+    background: var(--white); color: var(--blue-mid);
+    padding: 11px 24px; border-radius: var(--radius);
+    font-size: 14px; font-weight: 600; text-decoration: none;
+    border: 1.5px solid var(--blue-mid); transition: background .2s, color .2s;
+    font-family: var(--font); cursor: pointer; display: inline-block;
+  }
+  .btn-outline:hover { background: var(--blue-light); }
+  .hero-trust { margin-top: 28px; display: flex; gap: 22px; flex-wrap: wrap; align-items: center; }
+  .trust-item { font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 7px; }
+  .trust-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue-soft); flex-shrink: 0; }
+
+  /* ── SERVICES ── */
+  .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+  @media(max-width:700px){ .services-grid { grid-template-columns: 1fr 1fr; } }
+  @media(max-width:460px){ .services-grid { grid-template-columns: 1fr; } }
+  .svc-card {
+    background: var(--blue-light); border-radius: var(--radius-lg);
+    padding: 20px 18px; border: 1px solid var(--blue-border);
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .svc-card:hover { border-color: var(--blue-soft); box-shadow: 0 2px 12px rgba(21,101,192,.1); }
+  .svc-num  { font-size: 11px; font-weight: 700; color: var(--blue-soft); margin-bottom: 8px; letter-spacing: 1px; }
+  .svc-title{ font-size: 14px; font-weight: 700; color: var(--blue-dark); margin-bottom: 8px; line-height: 1.3; }
+  .svc-desc { font-size: 12.5px; color: #2c4a6e; line-height: 1.6; }
+
+  /* ── RESOURCES (3-card row) ── */
+  .resources-row { display: flex; gap: 16px; }
+  @media(max-width:560px){ .resources-row { flex-direction: column; } }
+  .res-card {
+    flex: 1; background: var(--blue-light);
+    border-radius: var(--radius-lg); padding: 22px 20px;
+    border: 1px solid var(--blue-border); transition: border-color .2s;
+    display: flex; flex-direction: column;
+  }
+  .res-card:hover { border-color: var(--blue-soft); }
+  .res-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: var(--blue-mid); color: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; margin-bottom: 12px; flex-shrink: 0;
+  }
+  .res-badge {
+    display: inline-block; font-size: 10px; font-weight: 700;
+    letter-spacing: 1.2px; text-transform: uppercase;
+    color: var(--blue-dark); background: var(--blue-border);
+    padding: 3px 10px; border-radius: 20px; margin-bottom: 10px;
+    align-self: flex-start;
+  }
+  .res-title { font-size: 15px; font-weight: 700; color: var(--blue-dark); margin-bottom: 8px; line-height: 1.3; }
+  .res-desc  { font-size: 13px; color: #2c4a6e; line-height: 1.65; margin-bottom: 14px; flex: 1; }
+  .res-link  { font-size: 13px; font-weight: 600; color: var(--blue-mid); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; margin-top: auto; }
+  .res-link:hover { color: var(--blue-dark); }
+
+  /* ── THREE COL ── */
+  .three-col { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+  @media(max-width:640px){ .three-col { grid-template-columns: 1fr; } }
+  .col-card {
+    background: var(--blue-light); border-radius: var(--radius-lg);
+    padding: 20px 18px; border: 1px solid var(--blue-border);
+  }
+  .col-head {
+    font-size: 14px; font-weight: 700; color: var(--blue-dark);
+    margin-bottom: 14px; padding-bottom: 10px;
+    border-bottom: 2px solid var(--blue-soft); line-height: 1.3;
+  }
+  .col-card ul { list-style: none; }
+  .col-card ul li {
+    font-size: 13px; color: #1a2d45; line-height: 1.55;
+    padding: 7px 0; border-bottom: .5px solid var(--blue-border);
+    display: flex; gap: 8px; align-items: flex-start;
+  }
+  .col-card ul li:last-child { border-bottom: none; padding-bottom: 0; }
+  .li-arrow { color: var(--blue-mid); font-weight: 700; flex-shrink: 0; font-size: 14px; margin-top: 1px; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+  @media(max-width:700px){ .testimonials-grid { grid-template-columns: 1fr 1fr; } }
+  @media(max-width:460px){ .testimonials-grid { grid-template-columns: 1fr; } }
+  .testi-card {
+    background: var(--blue-mid); border-radius: var(--radius-lg);
+    padding: 26px 22px; display: flex; flex-direction: column;
+    gap: 16px; position: relative;
+  }
+  .testi-quote-mark {
+    font-size: 52px; line-height: 1; color: rgba(255,255,255,0.2);
+    font-family: Georgia, serif; position: absolute; top: 14px; left: 18px;
+    pointer-events: none; user-select: none;
+  }
+  .testi-body {
+    font-size: 13.5px; color: rgba(255,255,255,0.92);
+    line-height: 1.72; padding-top: 20px; flex: 1;
+    font-style: italic;
+  }
+  .testi-divider {
+    height: 1px; background: rgba(255,255,255,0.2); border: none; margin: 0;
+  }
+  .testi-author { display: flex; align-items: center; gap: 12px; }
+  .testi-initials {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: rgba(255,255,255,0.18); border: 1.5px solid rgba(255,255,255,0.35);
+    color: var(--white); font-size: 13px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .testi-meta { display: flex; flex-direction: column; gap: 2px; }
+  .testi-name { font-size: 13px; font-weight: 700; color: var(--white); }
+  .testi-role { font-size: 11.5px; color: rgba(255,255,255,0.65); line-height: 1.4; }
+  .testi-stars { font-size: 12px; color: rgba(255,255,255,0.55); letter-spacing: 1px; }
+
+  /* ── ABOUT ── */
+  .about-inner { display: grid; grid-template-columns: 220px 1fr; gap: 32px; align-items: start; }
+  @media(max-width:600px){ .about-inner { grid-template-columns: 1fr; } }
+  .about-badge {
+    background: var(--blue-light); border-radius: var(--radius-lg);
+    padding: 24px 18px; border: 1px solid var(--blue-border); text-align: center;
+  }
+  .ab-initials {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: var(--blue-mid); color: var(--white);
+    font-size: 22px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 12px;
+  }
+  .ab-name { font-size: 15px; font-weight: 700; color: var(--blue-dark); margin-bottom: 4px; }
+  .ab-role { font-size: 12px; color: var(--text-muted); line-height: 1.5; margin-bottom: 16px; }
+  .ab-creds { display: flex; flex-direction: column; gap: 6px; }
+  .cred-pill {
+    background: var(--white); border: .5px solid var(--blue-soft);
+    border-radius: 20px; font-size: 11px; color: var(--blue-dark);
+    padding: 4px 10px; font-weight: 500; text-align: center;
+  }
+  .about-text p { font-size: 14px; color: var(--text-muted); line-height: 1.75; margin-bottom: 14px; }
+  .about-text p:last-child { margin-bottom: 0; }
+  .about-text strong { color: var(--black); font-weight: 600; }
+
+  /* ── CONTACT ── */
+  .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+  @media(max-width:600px){ .contact-inner { grid-template-columns: 1fr; } }
+  .contact-info p { font-size: 14px; color: var(--text-muted); line-height: 1.75; margin-bottom: 20px; }
+  .contact-detail {
+    display: flex; gap: 10px; align-items: center;
+    font-size: 13.5px; color: var(--blue-mid); font-weight: 600; margin-bottom: 10px;
+  }
+  .cd-icon {
+    width: 30px; height: 30px; border-radius: 6px;
+    background: var(--blue-light); border: .5px solid var(--blue-border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; flex-shrink: 0; font-style: normal; font-weight: 700;
+  }
+  .contact-note { margin-top: 16px; font-size: 12px; color: var(--text-light); line-height: 1.6; }
+  .contact-form {
+    background: var(--blue-light); border-radius: var(--radius-lg);
+    padding: 22px; border: 1px solid var(--blue-border);
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media(max-width:440px){ .form-row { grid-template-columns: 1fr; } }
+  .contact-form input,
+  .contact-form textarea,
+  .contact-form select {
+    width: 100%; padding: 10px 12px; font-size: 13px;
+    border: 1px solid var(--blue-border); border-radius: var(--radius);
+    background: var(--white); font-family: var(--font);
+    color: var(--text-main); transition: border-color .2s;
+    -webkit-appearance: none; appearance: none;
+  }
+  .contact-form input:focus,
+  .contact-form textarea:focus,
+  .contact-form select:focus { outline: none; border-color: var(--blue-mid); }
+  .contact-form textarea { resize: vertical; min-height: 88px; }
+  .form-submit {
+    background: var(--blue-mid); color: var(--white); padding: 12px;
+    border-radius: var(--radius); font-size: 14px; font-weight: 700;
+    border: none; cursor: pointer; width: 100%;
+    font-family: var(--font); transition: background .2s;
+  }
+  .form-submit:hover { background: var(--blue-dark); }
+
+  /* ── FOOTER ── */
+  footer { padding: 24px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-copy { font-size: 12px; color: var(--text-light); }
+  .footer-links { display: flex; gap: 18px; list-style: none; }
+  .footer-links a { font-size: 12px; color: var(--blue-mid); text-decoration: none; font-weight: 500; }
+  .footer-links a:hover { color: var(--blue-dark); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <span class="name">Jyotinath Ganguly</span>
+      <span class="sub">jyotinathganguly.com &nbsp;·&nbsp; Healthcare Management Consulting</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Book a Call</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <p class="sec-eyebrow">Healthcare Management Consulting &amp; Coaching</p>
+      <h1>Helping hospitals <em>perform better</em>,<br>deliver better care.</h1>
+      <p>I work with hospital leaders, clinical managers, and healthcare organisations to close the gap between strategy and on-ground performance — across operations, quality, finance, and governance.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Book a Free Discovery Call</a>
+        <a href="#services" class="btn-outline">Explore Services</a>
+      </div>
+      <div class="hero-trust">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section class="section" id="services">
+  <div class="container">
+    <p class="sec-eyebrow">What I Do</p>
+    <p class="sec-title">JG Consulting: Services</p>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-num">01</div>
+        <div class="svc-title">Business Process Optimization</div>
+        <div class="svc-desc">Map, analyse, and redesign core hospital workflows to eliminate waste, reduce delays, and improve throughput across departments.</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">02</div>
+        <div class="svc-title">Quality of Care</div>
+        <div class="svc-desc">Build robust quality frameworks, clinical audit systems, and patient safety protocols that translate policy into daily practice.</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">03</div>
+        <div class="svc-title">Resource Management</div>
+        <div class="svc-desc">Optimise workforce planning, bed utilisation, equipment deployment, and supply chains to do more with available resources.</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">04</div>
+        <div class="svc-title">Financial Management</div>
+        <div class="svc-desc">Strengthen revenue cycle management, cost control, and financial reporting to improve margins without compromising care.</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">05</div>
+        <div class="svc-title">Accreditation Roadmap</div>
+        <div class="svc-desc">Structured, step-by-step guidance through NABH, JCI, ISO or Safecare accreditation — from gap assessment to final survey readiness.</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">06</div>
+        <div class="svc-title">Individual Coaching</div>
+        <div class="svc-desc">One-on-one coaching for clinicians moving into management, mid-level hospital managers, and healthcare leaders building strategic capability.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── RESOURCES ── -->
+<section class="section" id="resources">
+  <div class="container">
+    <p class="sec-eyebrow">Learning &amp; Reading</p>
+    <p class="sec-title">Resources</p>
+    <div class="resources-row">
+
+      <div class="res-card">
+        <div class="res-icon">&#128218;</div>
+        <span class="res-badge">Books</span>
+        <div class="res-title">JG Books</div>
+        <div class="res-desc">Practitioner-focused textbooks on hospital management — covering KPIs, governance, quality, finance, and leadership for MBA students and clinician-managers in India and LMIC settings.</div>
+        <a href="#contact" class="res-link">View Books &#8594;</a>
+      </div>
+
+      <div class="res-card">
+        <div class="res-icon">&#9997;&#65039;</div>
+        <span class="res-badge">Newsletter</span>
+        <div class="res-title">JG Notes</div>
+        <div class="res-desc">A LinkedIn newsletter series on hospital operations, management best practices, and real-world case examples from Indian healthcare — published regularly for practitioners and leaders.</div>
+        <a href="https://www.linkedin.com/in/jyotinathganguly" class="res-link" target="_blank">Read on LinkedIn &#8594;</a>
+      </div>
+
+      <div class="res-card">
+        <div class="res-icon">&#127911;</div>
+        <span class="res-badge">Podcast</span>
+        <div class="res-title">JG Podcasts</div>
+        <div class="res-desc">Audio conversations on hospital management, leadership in healthcare, and the challenges facing clinical organisations — for professionals who prefer to learn on the move.</div>
+        <a href="#contact" class="res-link">Listen Now &#8594;</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── THREE COL ── -->
+<section class="section" id="approach">
+  <div class="container">
+    <div class="three-col">
+      <div class="col-card">
+        <div class="col-head">Why Most Hospitals Struggle</div>
+        <ul>
+          <li><span class="li-arrow">›</span>Strategy exists on paper but rarely reaches the ward or OPD</li>
+          <li><span class="li-arrow">›</span>KPIs are tracked in silos — no shared language of performance</li>
+          <li><span class="li-arrow">›</span>Clinical and administrative functions operate in parallel, not together</li>
+          <li><span class="li-arrow">›</span>Quality processes are compliance-driven, not improvement-driven</li>
+          <li><span class="li-arrow">›</span>Leaders are promoted for clinical skill, not management capability</li>
+        </ul>
+      </div>
+      <div class="col-card">
+        <div class="col-head">How I Work</div>
+        <ul>
+          <li><span class="li-arrow">›</span>Start with a structured diagnostic — not assumptions</li>
+          <li><span class="li-arrow">›</span>Co-design solutions with your team, not for them</li>
+          <li><span class="li-arrow">›</span>Ground every recommendation in measurable outcomes</li>
+          <li><span class="li-arrow">›</span>Work across clinical, operational, and financial domains together</li>
+          <li><span class="li-arrow">›</span>Transfer capability so the change outlasts the engagement</li>
+        </ul>
+      </div>
+      <div class="col-card">
+        <div class="col-head">Typical Outcomes</div>
+        <ul>
+          <li><span class="li-arrow">›</span>Measurable improvement in key operational KPIs within 90 days</li>
+          <li><span class="li-arrow">›</span>Accreditation readiness achieved on first application</li>
+          <li><span class="li-arrow">›</span>Clinician-managers who lead with confidence and data</li>
+          <li><span class="li-arrow">›</span>Financial controls that reduce leakage without cutting corners</li>
+          <li><span class="li-arrow">›</span>A culture where quality is owned by teams, not just the committee</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="section" id="testimonials">
+  <div class="container">
+    <p class="sec-eyebrow">Client Voices</p>
+    <p class="sec-title">What Leaders Say</p>
+    <div class="testimonials-grid">
+
+      <div class="testi-card">
+        <div class="testi-quote-mark">&ldquo;</div>
+        <p class="testi-body">Jyotinath brought clarity where we had complexity. Within three months, our OPD throughput improved measurably and our teams had a shared language for performance that simply didn't exist before.</p>
+        <hr class="testi-divider">
+        <div class="testi-author">
+          <div class="testi-initials">RV</div>
+          <div class="testi-meta">
+            <div class="testi-name">Dr. Ramesh Varma</div>
+            <div class="testi-role">Medical Director<br>Multi-specialty Hospital, Bangalore</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote-mark">&ldquo;</div>
+        <p class="testi-body">We engaged JG Consulting for our NABH accreditation journey. His structured approach — from gap assessment to mock survey — made the process far less daunting. We cleared on the first application.</p>
+        <hr class="testi-divider">
+        <div class="testi-author">
+          <div class="testi-initials">SK</div>
+          <div class="testi-meta">
+            <div class="testi-name">Sunita Krishnan</div>
+            <div class="testi-role">Chief Operating Officer<br>District Hospital, Tamil Nadu</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote-mark">&ldquo;</div>
+        <p class="testi-body">As a surgeon stepping into a leadership role, I was lost. The coaching sessions with Jyotinath gave me practical tools and real confidence to lead my department — without losing my clinical identity.</p>
+        <hr class="testi-divider">
+        <div class="testi-author">
+          <div class="testi-initials">AP</div>
+          <div class="testi-meta">
+            <div class="testi-name">Dr. Anil Patel</div>
+            <div class="testi-role">Head of Surgery<br>Teaching Hospital, Pune</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="section" id="about">
+  <div class="container">
+    <p class="sec-eyebrow">Background</p>
+    <p class="sec-title">About</p>
+    <div class="about-inner">
+      <div class="about-badge">
+        <div class="ab-initials">JG</div>
+        <div class="ab-name">Jyotinath Ganguly</div>
+        <div class="ab-role">Healthcare Management Consultant &amp; Coach<br>Bengaluru, India</div>
+        <div class="ab-creds">
+          <span class="cred-pill">Healthcare Management</span>
+          <span class="cred-pill">Author &amp; Educator</span>
+          <span class="cred-pill">Accreditation Expert</span>
+          <span class="cred-pill">Podcast Host</span>
+          <span class="cred-pill">LinkedIn Newsletter</span>
+        </div>
+      </div>
+      <div class="about-text">
+        <p>I help hospitals and healthcare organisations bridge the persistent gap between intent and execution. My work sits at the intersection of strategy, operations, and people — because lasting change requires all three.</p>
+        <p>With experience spanning hospital operations, quality management, financial governance, and leadership development, I bring a practitioner's eye to every engagement. My consulting approach is grounded in the realities of LMIC healthcare — resource constraints, regulatory complexity, and the human dynamics of clinical organisations.</p>
+        <p>I am the author of <strong>Hospital Management: A Practitioner's Guide</strong>, a textbook series for MBA students, clinicians transitioning to management, and working healthcare professionals. Through <strong>JG Notes</strong>, my LinkedIn newsletter, I share applied insights on hospital management with practitioners across India. And through <strong>JG Podcasts</strong>, I bring those conversations to audio — covering leadership, operations, and the challenges facing healthcare organisations today.</p>
+        <p>If you are a hospital leader looking to improve performance, a clinician stepping into a management role, or an organisation preparing for accreditation — I would be glad to talk.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="section" id="contact">
+  <div class="container">
+    <p class="sec-eyebrow">Get in Touch</p>
+    <p class="sec-title">Contact</p>
+    <div class="contact-inner">
+      <div class="contact-info">
+        <p>Whether you have a specific challenge in mind or are simply exploring what is possible, I welcome a conversation. Most engagements begin with a 30-minute discovery call — no obligation, just clarity.</p>
+        <div class="contact-detail">
+          <span class="cd-icon">&#9993;</span>
+          jyoti@jyotinathganguly.com
+        </div>
+        <div class="contact-detail">
+          <span class="cd-icon">&#9990;</span>
+          +91 98803 24068
+        </div>
+        <div class="contact-detail">
+          <span class="cd-icon">&#9675;</span>
+          Bengaluru, India
+        </div>
+        <div class="contact-detail">
+          <span class="cd-icon">in</span>
+          linkedin.com/in/jyotinathganguly
+        </div>
+        <p class="contact-note">
+          Available for global engagements and remote consulting.<br>
+          </p>
+      </div>
+      <div class="contact-form">
+        <div class="form-row">
+          <input type="text" placeholder="Your name" />
+          <input type="text" placeholder="Organisation" />
+        </div>
+        <input type="email" placeholder="Email address" />
+        <input type="text" placeholder="Designation / Role" />
+        <select>
+          <option value="">I am interested in…</option>
+          <option>Business Process Optimisation</option>
+          <option>Quality of Care</option>
+          <option>Resource Management</option>
+          <option>Financial Management</option>
+          <option>Accreditation Roadmap</option>
+          <option>Individual Coaching</option>
+          <option>JG Books</option>
+          <option>JG Notes (Newsletter)</option>
+          <option>JG Podcasts</option>
+          <option>General Enquiry</option>
+        </select>
+        <textarea placeholder="Briefly describe your situation or what you would like to discuss…"></textarea>
+        <button class="form-submit"
+          onclick="this.textContent='Message sent ✓'; this.style.background='#0D3D7C'; this.disabled=true;">
+          Send Message
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-copy">&#169; 2025 Jyotinath Ganguly &nbsp;·&nbsp; Healthcare Management Consulting &nbsp;·&nbsp; Bengaluru, India</div>
+      <ul class="footer-links">
+        <li><a href="https://www.linkedin.com/in/jyotinathganguly" target="_blank">LinkedIn</a></li>
+        <li><a href="#resources">JG Notes</a></li>
+        <li><a href="#resources">JG Books</a></li>
+        <li><a href="#resources">JG Podcasts</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
